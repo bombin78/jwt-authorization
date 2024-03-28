@@ -1,14 +1,27 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../ThemeProvider';
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@nextui-org/react';
+import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@nextui-org/react';
 import { FaRegMoon } from 'react-icons/fa';
 import { LuSunMedium } from 'react-icons/lu';
+import { logout, selectIsAuthenticated } from '../../../features/user/userSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useNavigate } from 'react-router-dom';
+import { CiLogout } from 'react-icons/ci';
 
 export const Header = () => {
 	const {
 		theme,
 		toggleTheme,
 	} = useContext(ThemeContext);
+	const isAuthenticated = useAppSelector(selectIsAuthenticated);
+	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+
+	const handleLogout = () => {
+		dispatch(logout());
+		localStorage.removeItem('token');
+		navigate('/auth');
+	};
 
 	return (
 		<Navbar>
@@ -27,7 +40,16 @@ export const Header = () => {
 				</NavbarItem>
 
 				<NavbarItem>
-
+					{ isAuthenticated && (
+						<Button
+							color='default'
+							variant='flat'
+							className='gap-2'
+							onClick={handleLogout}
+						>
+							<CiLogout /><span>Выйти</span>
+						</Button>
+					)}
 				</NavbarItem>
 			</NavbarContent>
 		</Navbar>
