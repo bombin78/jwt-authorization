@@ -106,7 +106,7 @@ export const Card = (props: CardProps) => {
 					break;
 
 				case "comment":
-					await deleteComment(id).unwrap();
+					await deleteComment(commentId).unwrap();
 					await refetchPosts();
 					break;
 
@@ -126,8 +126,9 @@ export const Card = (props: CardProps) => {
 		try {
 			likedByUser
 				? await unlikePost(id).unwrap()
-				: await likePost({ postId: id }).unwrap()
-			await refetchPosts();
+				: await likePost({ postId: id }).unwrap();
+			
+			await triggerGetPostById(id).unwrap();
 		} catch (error) {
 			if (hasErrorField(error)) {
 				setError(error.data.error);
