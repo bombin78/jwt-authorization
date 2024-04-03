@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Header } from '../Header';
 import { Container } from '../Container';
 import { SideBar } from '../SideBar';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { useSelect } from '@nextui-org/react';
-import { useAppSelector } from '../../hooks';
-import { selectIsAuthenticated, selectUser } from '../../../features/user/userSlice';
+import { useAppSelector } from '../../app/hooks';
+import { selectIsAuthenticated, selectUser } from '../../features/user/userSlice';
 import { Profile } from '../Profile';
 
 export const Layout = () => {

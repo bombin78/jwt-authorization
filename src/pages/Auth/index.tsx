@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, CardBody, Tab, Tabs } from '@nextui-org/react';
 import { Login } from '../../features/user/Login';
 import { Register } from '../../features/user/Register';

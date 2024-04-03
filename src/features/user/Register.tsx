@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Link } from '@nextui-org/react';
 import { useRegisterMutation } from '../../app/services/userApi';
-import { Input } from '../../app/components/Input';
+import { Input } from '../../components/Input';
 import { hasErrorField } from '../../utils/hasErrorField';
-import { ErrorMessage } from '../../app/components/ErrorMessage';
+import { ErrorMessage } from '../../components/ErrorMessage';
 
 type RegisterFormProps = {
 	name: string,

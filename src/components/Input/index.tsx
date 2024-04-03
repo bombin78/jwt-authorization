@@ -1,4 +1,3 @@
-import React from 'react';
 import { Input as NextUIInput } from '@nextui-org/react';
 import {
 	useController,

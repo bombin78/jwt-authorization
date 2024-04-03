@@ -3,18 +3,17 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { NextUIProvider } from "@nextui-org/react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "./app/components/ThemeProvider";
-import App from "./App";
+import { ThemeProvider } from "./components/ThemeProvider";
 import { store } from "./app/store";
-import "./index.css";
 import { Auth } from "./pages/Auth";
-import { Layout } from "./app/components/Layout";
+import { Layout } from "./components/Layout";
 import { Posts } from "./pages/Posts";
 import { CurrentPost } from "./pages/CurrentPost";
 import { UserProfile } from "./pages/UserProfile";
 import { Followers } from "./pages/Followers";
 import { Following } from "./pages/Following";
 import { AuthGuard } from "./features/user/AuthGuard";
+import "./index.css";
 
 const container = document.getElementById("root");
 

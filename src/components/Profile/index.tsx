@@ -1,8 +1,7 @@
-import React from 'react';
-import { useAppSelector } from '../../hooks';
-import { selectCurrent } from '../../../features/user/userSlice';
+import { useAppSelector } from '../../app/hooks';
+import { selectCurrent } from '../../features/user/userSlice';
 import { Card, CardBody, CardHeader, Image } from '@nextui-org/react';
-import { BASE_URL } from '../../../constants';
+import { BASE_URL } from '../../constants';
 import { Link } from 'react-router-dom';
 import { MdAlternateEmail } from 'react-icons/md';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useCurrentQuery } from '../../app/services/userApi';
 import { Spinner } from '@nextui-org/react';
 

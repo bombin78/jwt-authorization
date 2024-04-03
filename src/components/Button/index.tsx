@@ -1,7 +1,7 @@
-import React, {
+import {
 	type ReactNode,
 } from 'react';
-import { Button as NextUiButton } from '@nextui-org/react';
+import { Button as NextUIButton } from '@nextui-org/react';
 
 type ButtonProps = {
 	children: ReactNode,
@@ -23,7 +23,7 @@ export const Button = (props: ButtonProps) => {
 	} = props;
 
 	return (
-		<NextUiButton
+		<NextUIButton
 			className={className}
 			type={type}
 			color={color}
@@ -33,6 +33,6 @@ export const Button = (props: ButtonProps) => {
 			variant='light'
 		>
 			{children}
-		</NextUiButton>
+		</NextUIButton>
 	);
 };
