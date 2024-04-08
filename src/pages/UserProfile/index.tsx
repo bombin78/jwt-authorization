@@ -50,6 +50,23 @@ export const UserProfile = () => {
 		dispatch(resetUser());
 	}, [dispatch]);
 
+	const handleFollow = async () => {
+		try {
+			if(id) {
+				data?.isFollowing 
+					? await unfollowUser(id).unwrap()
+					: await followUser({followingId: id}).unwrap();
+
+				// Текущий пользователь и пользователь профиль, которого открыт
+				// могут быть разными, поэтому в этом проекте и существует два запроса
+				await triggerGetUserByIdQuery(id);
+				await triggerCurrentQuery();
+			}
+		} catch(error) {
+			
+		}
+	}
+
 	if (!data) {
 		return null;
 	}
@@ -74,6 +91,7 @@ export const UserProfile = () => {
 									color={data.isFollowing ? 'default' : 'primary'}
 									variant='flat'
 									className="gap-2"
+									onClick={handleFollow}
 									endContent={
 										data.isFollowing ? (
 											<MdOutlinePersonAddDisabled />
