@@ -31,7 +31,7 @@ export const CreateComment = () => {
 				await getPostById(id).unwrap();
 			}
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		}
 	});
 

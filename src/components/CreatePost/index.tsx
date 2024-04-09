@@ -26,7 +26,7 @@ export const CreatePost = () => {
 			setValue('post', '');
 			await triggerAllPosts().unwrap();
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		}
 	});
 

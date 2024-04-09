@@ -52,18 +52,18 @@ export const UserProfile = () => {
 
 	const handleFollow = async () => {
 		try {
-			if(id) {
-				data?.isFollowing 
+			if (id) {
+				data?.isFollowing
 					? await unfollowUser(id).unwrap()
-					: await followUser({followingId: id}).unwrap();
+					: await followUser({ followingId: id }).unwrap();
 
 				// Текущий пользователь и пользователь профиль, которого открыт
 				// могут быть разными, поэтому в этом проекте и существует два запроса
 				await triggerGetUserByIdQuery(id);
 				await triggerCurrentQuery();
 			}
-		} catch(error) {
-			
+		} catch (error) {
+			console.log(error);
 		}
 	}
 
@@ -115,9 +115,9 @@ export const UserProfile = () => {
 				<Card className="flex flex-col space-y-4 p-5 flex-1">
 					<ProfileInfo title="Почта" info={data.email} />
 					<ProfileInfo title="Местоположение" info={data.location} />
-					<ProfileInfo 
-						title="Дата рождения" 
-						info={formatToClientDate(data.dateOfBirth)} 
+					<ProfileInfo
+						title="Дата рождения"
+						info={formatToClientDate(data.dateOfBirth)}
 					/>
 					<ProfileInfo title="Обо мне" info={data.bio} />
 
