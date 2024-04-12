@@ -33,6 +33,7 @@ import { CiEdit } from "react-icons/ci";
 import { ProfileInfo } from "../../components/ProfileInfo";
 import { formatToClientDate } from "../../utils/formatToClientDate";
 import { CountInfo } from "../../components/CountInfo";
+import { EditProfile } from "../../components/EditProfile";
 
 export const UserProfile = () => {
 	const { id } = useParams<{ id: string }>();
@@ -66,6 +67,18 @@ export const UserProfile = () => {
 			console.log(error);
 		}
 	}
+
+	const handleClose = async () => {
+		try {
+			if (id) {
+				await triggerGetUserByIdQuery(id);
+				await triggerCurrentQuery();
+				onClose();
+			}
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
 	if (!data) {
 		return null;
@@ -104,7 +117,10 @@ export const UserProfile = () => {
 								</Button>
 							)
 							: (
-								<Button endContent={<CiEdit />}>
+								<Button
+									onClick={() => onOpen()}
+									endContent={<CiEdit />}
+								>
 									Редактировать
 								</Button>
 							)
@@ -133,6 +149,12 @@ export const UserProfile = () => {
 					</div>
 				</Card>
 			</div>
+
+			<EditProfile
+				isOpen={isOpen}
+				onClose={handleClose}
+				user={data}
+			/>
 		</>
 	);
 };
